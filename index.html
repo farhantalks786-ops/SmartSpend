@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartSpend AI</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div id="authSection" style="padding:15px; text-align:right;">
+        <div class="auth-box">
+
+            <button id="loginBtn" class="login-btn" type="button">
+                <i class="fa-brands fa-google"></i>
+                Sign in with Google
+            </button>
+
+            <div id="userInfo" class="user-box" style="display:none;">
+                <img id="userPhoto" alt="User profile photo">
+
+                <div class="user-details">
+                    <span id="userName"></span>
+                    <small>Welcome back 👋</small>
+                </div>
+
+                <button id="logoutBtn" class="logout-btn" type="button">
+                    Logout
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="background"></div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-circle">💰</div>
+                <h2>SmartSpend AI</h2>
+            </div>
+
+            <ul>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#analytics">Analytics</a></li>
+                <li><a href="#budget">Budget</a></li>
+                <li><a href="#ai">AI Insights</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero" id="dashboard">
+            <div class="hero-left">
+                <h1>
+                    Manage Your Money
+                    Like a Pro.
+                </h1>
+                <p>
+                    SmartSpend AI helps you track income, monitor expenses,
+                    analyze spending habits and improve your financial future.
+                </p>
+            </div>
+
+            <div class="hero-right">
+                <div class="glass-card">
+                    <h3>Total Balance</h3>
+                    <h1 id="balance">₹24,600</h1>
+                    <p>Updated just now</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cards">
+            <div class="card income">
+                <div class="icon">💵</div>
+                <h3>Total Income</h3>
+                <h2 id="income">₹45,000</h2>
+                <p>+15% this month</p>
+            </div>
+
+            <div class="card expense">
+                <div class="icon">💸</div>
+                <h3>Total Expense</h3>
+                <h2 id="expense">₹20,400</h2>
+                <p>-8% this month</p>
+            </div>
+
+            <div class="card savings">
+                <div class="icon">🏦</div>
+                <h3>Savings</h3>
+                <h2>₹24,600</h2>
+                <p>Growing steadily</p>
+            </div>
+
+            <div class="card budget">
+                <div class="icon">🎯</div>
+                <h3>Budget Left</h3>
+                <h2>72%</h2>
+                <p>Excellent control</p>
+            </div>
+        </section>
+
+        <section class="chatbot" id="ai">
+            <div class="chat-glow"></div>
+
+            <div class="chat-box">
+                <div class="chat-header">
+                    <div class="ai-icon">🤖</div>
+                    <div>
+                        <h1>SmartSpend AI Assistant</h1>
+                        <p>Your Personal Financial Intelligence</p>
+                    </div>
+                </div>
+
+                <div class="ai-suggestions">
+                    <button class="suggestion" type="button">💰 Where did I spend the most?</button>
+                    <button class="suggestion" type="button">📈 Compare this month with last month</button>
+                    <button class="suggestion" type="button">💡 Give me saving tips</button>
+                    <button class="suggestion" type="button">📊 Summarize my expenses</button>
+                </div>
+
+                <div class="messages" id="messages">
+                    <div class="bot">
+                        👋 Welcome back, Farhan!
+                        I'm <strong>SmartSpend AI</strong>, your personal financial assistant.
+                        I can:
+                        ✅ Analyze your spending
+                        📈 Compare monthly expenses
+                        💰 Suggest ways to save money
+                        🎯 Help you achieve your budget goals
+                        Try clicking one of the suggestions above or ask your own question.
+                    </div>
+                </div>
+
+                <div class="chat-input">
+                    <input id="chatInput" type="text" placeholder="Ask anything about your money..." aria-label="Ask anything about your money">
+                    <button id="sendBtn" type="button" aria-label="Send message">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-actions">
+            <h2>Quick Actions</h2>
+
+            <div class="action-grid">
+                <div class="action" id="incomeQuick" type="button">
+                    ➕
+                    <h3>Add Income</h3>
+                </div>
+
+                <div class="action" id="expenseQuick" type="button">
+                    💳
+                    <h3>Add Expense</h3>
+                </div>
+
+                <div class="action" id="pdfQuick" type="button">
+                    📄
+                    <h3>Export PDF</h3>
+                </div>
+
+                <div class="action" id="analyticsQuick" type="button">
+                    📊
+                    <h3>Analytics</h3>
+                </div>
+
+                <div class="action" id="aiQuick" type="button">
+                    🤖
+                    <h3>AI Report</h3>
+                </div>
+
+                <div class="action" id="themeQuick" type="button">
+                    🌙
+                    <h3>Dark Mode</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="overview">
+            <div class="left-panel">
+                <h2>Recent Activity</h2>
+                <div id="recentActivity"></div>
+            </div>
+
+            <div class="right-panel">
+                <h2>AI Suggestion</h2>
+
+                <div class="ai-card">
+                    <h3>Great Job 🎉</h3>
+                    <p>
+                        You spent 12% less on Food than last month.
+                        Keep this habit to save nearly ₹15,000 every year.
+                    </p>
+                    <button type="button">View Full Report</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="analytics" id="analytics">
+            <h2 class="analytics-title">📊 SmartSpend Analytics Dashboard</h2>
+
+            <div class="analytics-cards">
+                <div class="analytics-card">
+                    <h4>Total Income</h4>
+                    <h2 id="analyticsIncome">₹0</h2>
+                </div>
+
+                <div class="analytics-card">
+                    <h4>Total Expense</h4>
+                    <h2 id="analyticsExpense">₹0</h2>
+                </div>
+
+                <div class="analytics-card">
+                    <h4>Balance</h4>
+                    <h2 id="analyticsBalance">₹0</h2>
+                </div>
+
+                <div class="analytics-card">
+                    <h4>Total Transactions</h4>
+                    <h2 id="analyticsTransactions">0</h2>
+                </div>
+            </div>
+
+            <div class="chart-grid">
+                <div class="chart-card">
+                    <h3>🥧 Expense by Category</h3>
+                    <canvas id="expenseChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3>📈 Income vs Expense</h3>
+                    <canvas id="incomeExpenseChart"></canvas>
+                </div>
+            </div>
+
+            <div class="analytics-buttons" id="export-buttons">
+                <button id="pdfBtn" type="button">Export PDF</button>
+                <button id="excelBtn" type="button">Export Excel</button>
+                <button id="themeBtn" type="button">Toggle Theme</button>
+            </div>
+        </section>
+
+        <section class="transaction-section">
+            <div class="transaction-form">
+                <h2>Add New Transaction</h2>
+
+                <div class="form-group">
+                    <label for="title">Transaction Name</label>
+                    <input type="text" id="title" placeholder="e.g. Salary">
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" placeholder="₹ Enter Amount">
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category">
+                        <option>Food</option>
+                        <option>Transport</option>
+                        <option>Shopping</option>
+                        <option>Bills</option>
+                        <option>Education</option>
+                        <option>Entertainment</option>
+                        <option>Health</option>
+                        <option>Salary</option>
+                        <option>Others</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="type">Type</label>
+                    <select id="type">
+                        <option>Income</option>
+                        <option>Expense</option>
+                    </select>
+                </div>
+
+                <button id="addBtn" type="button">Add Transaction</button>
+            </div>
+
+            <div class="transaction-list">
+                <div class="transaction-header">
+                    <h2>Recent Transactions</h2>
+                    <input type="text" placeholder="Search transaction" aria-label="Search transactions">
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tableBody">
+                        <tr>
+                            <td>Salary</td>
+                            <td>Income</td>
+                            <td class="green">+ ₹25000</td>
+                            <td>08 Jul 2026</td>
+                            <td>
+                                <button type="button">Edit</button>
+                                <button type="button">Delete</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Food</td>
+                            <td>Restaurant</td>
+                            <td class="red">- ₹500</td>
+                            <td>08 Jul 2026</td>
+                            <td>
+                                <button type="button">Edit</button>
+                                <button type="button">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="budget-section" id="budget">
+            <div class="budget-card">
+                <h2>Monthly Budget</h2>
+                <h1>₹50,000</h1>
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <p>72% Remaining</p>
+            </div>
+
+            <div class="budget-card">
+                <h2>AI Financial Insights</h2>
+                <ul>
+                    <li>✅ Your spending decreased by 12% this month.</li>
+                    <li>💡 Reduce food expenses by ₹1,500 to reach your savings goal.</li>
+                    <li>📈 Income has increased compared to last month.</li>
+                    <li>🎯 You are likely to save ₹18,000 this year.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+    <div class="footer-content">
+        <h2>SmartSpend AI</h2>
+        <p>AI Powered Personal Expense Tracker</p>
+        <p>Designed with ❤️ by Farhan</p>
+
+        <div class="copyright">
+            © 2026 SmartSpend AI. All Rights Reserved.
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    <script src="config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="script.js"></script>
+
+</body>
+
+</html>

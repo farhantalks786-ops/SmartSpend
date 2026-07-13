@@ -1,0 +1,1258 @@
+/* ==========================================================================
+   RESET
+   ========================================================================== */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   VARIABLES
+   ========================================================================== */
+
+:root{
+    --primary: #6d5dfc;
+    --secondary: #4f46e5;
+    --success: #22c55e;
+    --danger: #ef4444;
+    --glass: rgba(255, 255, 255, .08);
+}
+
+/* ==========================================================================
+   GLOBAL
+   ========================================================================== */
+
+body{
+    overflow-x: hidden;
+    background: #09090f;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Animated gradient background layer */
+.background{
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(circle at top left, #5b21b6 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #2563eb 0%, transparent 35%),
+        radial-gradient(circle at center, #0f172a 0%, #020617 70%);
+}
+
+/* Floating decorative blobs */
+body::before{
+    content: "";
+    position: fixed;
+    top: -120px;
+    left: -120px;
+    z-index: -1;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: #7c3aed;
+    filter: blur(180px);
+    opacity: .35;
+    animation: float1 10s ease-in-out infinite;
+}
+
+body::after{
+    content: "";
+    position: fixed;
+    right: -120px;
+    bottom: -120px;
+    z-index: -1;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: #2563eb;
+    filter: blur(180px);
+    opacity: .35;
+    animation: float2 12s ease-in-out infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background: #0b1120;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 20px;
+    background: linear-gradient(#7c3aed, #2563eb);
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: #8b5cf6;
+}
+
+/* Global interactive defaults */
+button{
+    transition: .35s;
+}
+
+button:hover{
+    transform: translateY(-3px);
+}
+
+input:focus,
+select:focus{
+    outline: none;
+    border: 1px solid #7c3aed;
+    box-shadow: 0 0 20px rgba(124, 58, 237, .35);
+}
+
+::selection{
+    background: var(--primary);
+    color: white;
+}
+
+/* ==========================================================================
+   HEADER / NAVBAR
+   ========================================================================== */
+
+header{
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    padding: 25px 70px;
+    background: rgba(0, 0, 0, .25);
+    backdrop-filter: blur(25px);
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-circle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    box-shadow: 0 0 30px rgba(99, 102, 241, .6);
+    font-size: 24px;
+    animation: pulse 3s infinite;
+}
+
+.logo h2{
+    font-size: 30px;
+    font-weight: 700;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+nav a{
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: .3s;
+}
+
+nav a:hover{
+    color: #60a5fa;
+}
+
+/* --- Auth widget (top-right sign in / user info) --- */
+
+.auth-box{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+    margin: 20px;
+}
+
+.login-btn{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, .35);
+    transition: .35s;
+}
+
+.login-btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(37, 99, 235, .45);
+}
+
+.user-box{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-radius: 60px;
+    background: var(--glass);
+    border: 1px solid rgba(255, 255, 255, .12);
+    backdrop-filter: blur(15px);
+}
+
+.user-box img{
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 2px solid #2563eb;
+}
+
+.user-details{
+    display: flex;
+    flex-direction: column;
+}
+
+.user-details span{
+    font-weight: 600;
+}
+
+.user-details small{
+    font-size: 12px;
+    opacity: .7;
+}
+
+.logout-btn{
+    padding: 10px 18px;
+    border: none;
+    border-radius: 40px;
+    background: var(--danger);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.logout-btn:hover{
+    transform: scale(1.05);
+    background: #dc2626;
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+.hero{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1400px;
+    margin: 80px auto;
+    gap: 100px;
+}
+
+.hero-left{
+    flex: 1;
+}
+
+.hero-right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 400px;
+}
+
+.glass-card{
+    width: 380px;
+    max-width: 380px;
+    padding: 40px;
+    border-radius: 30px;
+    background: var(--glass);
+    border: 1px solid rgba(255, 255, 255, .15);
+    backdrop-filter: blur(25px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
+}
+
+.glass-card h3{
+    color: #cbd5e1;
+}
+
+.glass-card h1{
+    margin: 20px 0;
+    font-size: 55px;
+}
+
+/* ==========================================================================
+   SUMMARY CARDS
+   ========================================================================== */
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    width: 90%;
+    margin: 70px auto;
+}
+
+.card{
+    position: relative;
+    overflow: hidden;
+    padding: 35px;
+    border-radius: 25px;
+    background: var(--glass);
+    border: 1px solid rgba(255, 255, 255, .12);
+    backdrop-filter: blur(20px);
+    cursor: pointer;
+    transition: .35s;
+}
+
+.card::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .08), transparent);
+    opacity: 0;
+    transition: .4s;
+}
+
+.card:hover::before{
+    opacity: 1;
+}
+
+.card:hover{
+    transform: translateY(-12px);
+    box-shadow: 0 25px 60px rgba(59, 130, 246, .25);
+}
+
+.card .icon{
+    margin-bottom: 18px;
+    font-size: 45px;
+}
+
+.card h3{
+    margin-bottom: 12px;
+    color: #cbd5e1;
+    font-weight: 500;
+}
+
+.card h2{
+    margin-bottom: 10px;
+    font-size: 38px;
+}
+
+.card p{
+    color: #94a3b8;
+}
+
+.income{
+    border-left: 6px solid var(--success);
+}
+
+.expense{
+    border-left: 6px solid var(--danger);
+}
+
+.savings{
+    border-left: 6px solid #3b82f6;
+}
+
+.budget{
+    border-left: 6px solid #a855f7;
+}
+
+/* ==========================================================================
+   QUICK ACTIONS
+   ========================================================================== */
+
+.quick-actions{
+    width: 90%;
+    margin: 80px auto;
+}
+
+.quick-actions h2{
+    margin-bottom: 35px;
+    font-size: 34px;
+}
+
+.action-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 25px;
+}
+
+.action{
+    padding: 35px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .08);
+    backdrop-filter: blur(18px);
+    text-align: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: .35s;
+}
+
+.action:hover{
+    transform: translateY(-10px);
+    background: linear-gradient(135deg, #7c3aed, #2563eb);
+}
+
+.action h3{
+    margin-top: 18px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   OVERVIEW (Recent Activity + AI Suggestion)
+   ========================================================================== */
+
+.overview{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 35px;
+    width: 90%;
+    margin: 90px auto;
+}
+
+.left-panel,
+.right-panel{
+    padding: 35px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, .07);
+    border: 1px solid rgba(255, 255, 255, .08);
+    backdrop-filter: blur(20px);
+}
+
+.left-panel h2,
+.right-panel h2{
+    margin-bottom: 25px;
+}
+
+.activity{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    font-size: 17px;
+}
+
+.green{
+    color: var(--success);
+    font-weight: 700;
+}
+
+.red{
+    color: var(--danger);
+    font-weight: 700;
+}
+
+.ai-card{
+    margin-top: 20px;
+    padding: 35px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #7c3aed, #2563eb);
+}
+
+.ai-card h3{
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.ai-card p{
+    color: white;
+    line-height: 1.8;
+}
+
+.ai-card button{
+    margin-top: 30px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    color: #111827;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.ai-card button:hover{
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   CHATBOT / AI ASSISTANT
+   ========================================================================== */
+
+.chatbot{
+    position: relative;
+    width: 90%;
+    margin: 70px auto;
+    padding: 0 7%;
+}
+
+.chat-box{
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    padding: 45px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .08);
+    backdrop-filter: blur(22px);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, .25),
+        0 0 70px rgba(77, 124, 255, .15);
+}
+
+.chat-glow{
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    z-index: 0;
+    width: 420px;
+    height: 420px;
+    background: linear-gradient(135deg, var(--secondary), #3b82f6, #06b6d4);
+    filter: blur(140px);
+    opacity: .25;
+    animation: floatGlow 8s ease-in-out infinite;
+}
+
+.chat-header{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.ai-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--secondary), #06b6d4);
+    box-shadow: 0 0 35px rgba(79, 70, 229, .55);
+    font-size: 42px;
+    animation: pulseAI 2.5s infinite;
+}
+
+.chat-header h1{
+    margin-bottom: 6px;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.chat-header p{
+    font-size: 16px;
+    opacity: .75;
+}
+
+.ai-suggestions{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.suggestion{
+    padding: 16px;
+    border: none;
+    border-radius: 14px;
+    background: var(--glass);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: .35s;
+}
+
+.suggestion:hover{
+    transform: translateY(-5px);
+    background: linear-gradient(135deg, var(--secondary), #2563eb);
+    box-shadow: 0 15px 30px rgba(37, 99, 235, .35);
+}
+
+.messages{
+    height: 330px;
+    margin: 30px 0 25px;
+    padding: 20px;
+    overflow-y: auto;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .05);
+}
+
+.user{
+    max-width: 80%;
+    margin: 15px 0 15px auto;
+    padding: 15px;
+    border-radius: 15px;
+    background: #2563eb;
+    color: white;
+}
+
+.bot{
+    width: 70%;
+    max-width: 80%;
+    margin: 15px 0;
+    padding: 15px;
+    border-radius: 15px;
+    background: var(--glass);
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+.chat-input{
+    display: flex;
+    gap: 15px;
+}
+
+.chat-input input{
+    flex: 1;
+    padding: 18px 22px;
+    border: none;
+    border-radius: 16px;
+    background: var(--glass);
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.chat-input button{
+    width: 65px;
+    padding: 18px 35px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--secondary), #2563eb);
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    transition: .35s;
+}
+
+.chat-input button:hover{
+    transform: scale(1.08);
+    background: #1d4ed8;
+    box-shadow: 0 10px 30px rgba(37, 99, 235, .45);
+}
+
+/* --- AI typing indicator --- */
+
+.typing-box{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .05);
+}
+
+.typing-header{
+    color: #60a5fa;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.typing-text{
+    opacity: .8;
+}
+
+.typing-dots{
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.typing-dots span{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--secondary);
+    animation: typingBounce 1.2s infinite;
+}
+
+.typing-dots span:nth-child(2){
+    animation-delay: .2s;
+}
+
+.typing-dots span:nth-child(3){
+    animation-delay: .4s;
+}
+
+/* ==========================================================================
+   ANALYTICS
+   ========================================================================== */
+
+.analytics{
+    margin: 80px auto;
+    padding: 0 7%;
+}
+
+.analytics-title{
+    margin-bottom: 35px;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.analytics-cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.analytics-card{
+    padding: 28px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .08);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .18);
+    transition: .35s;
+}
+
+.analytics-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(79, 70, 229, .25);
+}
+
+.analytics-card h4{
+    margin-bottom: 12px;
+    font-size: 15px;
+    opacity: .7;
+}
+
+.analytics-card h2{
+    background: linear-gradient(90deg, #60a5fa, var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.chart-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 30px;
+}
+
+.chart-card{
+    padding: 30px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .08);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .20);
+    transition: .35s;
+}
+
+.chart-card:hover{
+    transform: translateY(-6px);
+}
+
+.chart-card h3{
+    margin-bottom: 25px;
+    font-size: 22px;
+}
+
+.chart-card canvas{
+    width: 100% !important;
+    height: 340px !important;
+}
+
+.analytics-buttons{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.analytics-buttons button{
+    padding: 15px 25px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #7c3aed, #2563eb);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.analytics-buttons button:hover{
+    transform: translateY(-4px);
+}
+
+/* ==========================================================================
+   TRANSACTIONS
+   ========================================================================== */
+
+.transaction-section{
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 35px;
+    width: 90%;
+    margin: 90px auto;
+}
+
+.transaction-form,
+.transaction-list{
+    padding: 35px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, .07);
+    border: 1px solid rgba(255, 255, 255, .08);
+    backdrop-filter: blur(20px);
+}
+
+.transaction-form h2,
+.transaction-list h2{
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+.form-group{
+    margin-bottom: 22px;
+}
+
+.form-group label{
+    display: block;
+    margin-bottom: 10px;
+    color: #cbd5e1;
+}
+
+.form-group input,
+.form-group select{
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 15px;
+    background: var(--glass);
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.form-group input::placeholder{
+    color: #94a3b8;
+}
+
+.form-group select option{
+    background: #111827;
+}
+
+#addBtn{
+    width: 100%;
+    margin-top: 15px;
+    padding: 18px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #8b5cf6, #2563eb);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: .35s;
+}
+
+#addBtn:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(99, 102, 241, .4);
+}
+
+.transaction-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.transaction-header input{
+    width: 260px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 12px;
+    background: var(--glass);
+    color: white;
+    outline: none;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead{
+    background: rgba(255, 255, 255, .06);
+}
+
+th{
+    padding: 18px;
+    color: #94a3b8;
+    text-align: left;
+}
+
+td{
+    padding: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+td button{
+    margin-right: 8px;
+    padding: 9px 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+td button:first-child{
+    background: #3b82f6;
+    color: white;
+}
+
+td button:last-child{
+    background: var(--danger);
+    color: white;
+}
+
+td button:hover{
+    transform: scale(1.05);
+}
+
+tbody tr{
+    transition: .3s;
+}
+
+tbody tr:hover{
+    background: rgba(255, 255, 255, .05);
+}
+
+/* ==========================================================================
+   BUDGET
+   ========================================================================== */
+
+.budget-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    width: 90%;
+    margin: 80px auto;
+}
+
+.budget-card{
+    padding: 35px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, .07);
+    border: 1px solid rgba(255, 255, 255, .08);
+    backdrop-filter: blur(20px);
+}
+
+.budget-card h1{
+    margin: 20px 0;
+    font-size: 50px;
+}
+
+.progress{
+    height: 16px;
+    width: 100%;
+    margin: 25px 0;
+    overflow: hidden;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, .08);
+}
+
+.progress-bar{
+    width: 72%;
+    height: 100%;
+    border-radius: 30px;
+    background: linear-gradient(90deg, var(--success), #3b82f6);
+}
+
+.budget-card ul{
+    margin-top: 20px;
+    padding-left: 20px;
+}
+
+.budget-card li{
+    margin-bottom: 16px;
+    color: #cbd5e1;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+footer{
+    margin-top: 100px;
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, .03);
+    border-top: 1px solid rgba(255, 255, 255, .08);
+    backdrop-filter: blur(20px);
+    color: #94a3b8;
+    text-align: center;
+}
+
+.footer-content h2{
+    margin-bottom: 15px;
+    color: white;
+}
+
+.footer-content p{
+    margin: 8px 0;
+}
+
+/* ==========================================================================
+   NOTIFICATIONS (toast shown after adding a transaction)
+   ========================================================================== */
+
+.notify{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    padding: 16px 26px;
+    border-radius: 14px;
+    background: rgba(34, 197, 94, .18);
+    border: 1px solid rgba(34, 197, 94, .45);
+    backdrop-filter: blur(20px);
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .3);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: .35s;
+}
+
+.notify.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+/* Entrance animation applied to every major section */
+.hero,
+.cards,
+.quick-actions,
+.overview,
+.transaction-section,
+.budget-section,
+.chatbot,
+.analytics,
+footer{
+    animation: fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Shared hover glow */
+.card:hover,
+.glass-card:hover,
+.transaction-form:hover,
+.transaction-list:hover,
+.budget-card:hover,
+.chat-box:hover{
+    box-shadow:
+        0 0 30px rgba(124, 58, 237, .25),
+        0 0 80px rgba(37, 99, 235, .18);
+}
+
+@keyframes float1{
+    0%, 100%{ transform: translateY(0); }
+    50%{ transform: translateY(60px); }
+}
+
+@keyframes float2{
+    0%, 100%{ transform: translateY(0); }
+    50%{ transform: translateY(-60px); }
+}
+
+@keyframes pulse{
+    0%, 100%{ transform: scale(1); }
+    50%{ transform: scale(1.12); }
+}
+
+@keyframes pulseAI{
+    0%{ transform: scale(1); }
+    50%{ transform: scale(1.08); }
+    100%{ transform: scale(1); }
+}
+
+@keyframes floatGlow{
+    0%{ transform: translateY(0px); }
+    50%{ transform: translateY(35px); }
+    100%{ transform: translateY(0px); }
+}
+
+@keyframes typingBounce{
+    0%, 80%, 100%{
+        transform: scale(.6);
+        opacity: .4;
+    }
+    40%{
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 1000px){
+    .hero,
+    .overview,
+    .transaction-section,
+    .budget-section{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .hero{
+        text-align: center;
+    }
+
+    nav ul{
+        display: none;
+    }
+
+    .glass-card{
+        width: 100%;
+    }
+
+    .transaction-header{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .transaction-header input{
+        width: 100%;
+    }
+}
+
+@media (max-width: 900px){
+    .ai-suggestions{
+        grid-template-columns: 1fr;
+    }
+
+    .chat-header{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .chat-header h1{
+        font-size: 28px;
+    }
+
+    .chat-box{
+        padding: 28px;
+    }
+
+    .chart-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .analytics-title{
+        font-size: 28px;
+    }
+
+    .chart-card canvas{
+        height: 260px !important;
+    }
+}
+
+@media (max-width: 768px){
+    header{
+        padding: 20px;
+    }
+
+    .hero-left h1{
+        font-size: 42px;
+    }
+
+    .cards{
+        grid-template-columns: 1fr;
+    }
+
+    .action-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .chat-input{
+        flex-direction: column;
+    }
+
+    .bot{
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px){
+    .hero-left h1{
+        font-size: 34px;
+    }
+
+    .logo h2{
+        font-size: 22px;
+    }
+
+    .action-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .card{
+        padding: 25px;
+    }
+}
+footer{
+    margin-top: 80px;
+    padding: 40px 20px 20px;
+    text-align: center;
+}
+
+.footer-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.copyright{
+    margin-top: 25px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    width: 100%;
+}
