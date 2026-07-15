@@ -149,6 +149,35 @@ function formatCurrency(value) {
 
 }
 
+// ===============================
+// ANIMATED COUNTER
+// ===============================
+
+function animateValue(element, start, end, duration = 1000) {
+
+    let startTime = null;
+
+    function animation(currentTime) {
+
+        if (!startTime) startTime = currentTime;
+
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+
+        const value = Math.floor(progress * (end - start) + start);
+
+        element.textContent = "₹" + value.toLocaleString("en-IN");
+
+        if (progress < 1) {
+
+            requestAnimationFrame(animation);
+
+        }
+
+    }
+
+    requestAnimationFrame(animation);
+
+}
 function updateSummary() {
 
     let income = 0;
@@ -168,9 +197,11 @@ function updateSummary() {
 
     });
 
-    incomeElement.textContent = formatCurrency(income);
-    expenseElement.textContent = formatCurrency(expense);
-    balanceElement.textContent = formatCurrency(income - expense);
+    animateValue(incomeElement,0,income);
+
+    animateValue(expenseElement,0,expense);
+
+    animateValue(balanceElement,0,income-expense);
 
 }
 
@@ -469,14 +500,23 @@ function updateAnalytics() {
 
     const balance = income - expense;
 
-    document.getElementById("analyticsIncome").innerText =
-        "₹" + income.toLocaleString();
+    animateValue(
+document.getElementById("analyticsIncome"),
+0,
+income
+);
 
-    document.getElementById("analyticsExpense").innerText =
-        "₹" + expense.toLocaleString();
+animateValue(
+document.getElementById("analyticsExpense"),
+0,
+expense
+);
 
-    document.getElementById("analyticsBalance").innerText =
-        "₹" + balance.toLocaleString();
+animateValue(
+document.getElementById("analyticsBalance"),
+0,
+balance
+);
 
     document.getElementById("analyticsTransactions").innerText =
         transactions.length;
@@ -1048,3 +1088,71 @@ updateRecentActivity();
 updateAnalytics();
 updateBudget();
 document.getElementById("year").textContent = new Date().getFullYear();
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        const loader = document.getElementById("loader");
+
+        loader.style.opacity = "0";
+
+        loader.style.visibility = "hidden";
+
+    },1800);
+
+});
+// ===========================
+// SCROLL REVEAL
+// ===========================
+
+const reveals = document.querySelectorAll(".reveal");
+
+function revealSections(){
+
+    reveals.forEach(section=>{
+
+        const windowHeight = window.innerHeight;
+
+        const top = section.getBoundingClientRect().top;
+
+        if(top < windowHeight - 120){
+
+            section.classList.add("active");
+
+        }
+
+    });
+
+}
+
+window.addEventListener("scroll", revealSections);
+
+revealSections();
+const glow = document.getElementById("cursor-glow");
+
+let mouseX = 0;
+let mouseY = 0;
+
+let glowX = 0;
+let glowY = 0;
+
+document.addEventListener("mousemove",(e)=>{
+
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+});
+
+function animateGlow(){
+
+    glowX += (mouseX - glowX) * 0.12;
+    glowY += (mouseY - glowY) * 0.12;
+
+    glow.style.left = glowX + "px";
+    glow.style.top = glowY + "px";
+
+    requestAnimationFrame(animateGlow);
+
+}
+
+animateGlow();
