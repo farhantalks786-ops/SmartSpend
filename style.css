@@ -1256,3 +1256,593 @@ footer{
     text-align: center;
     width: 100%;
 }
+/* ===========================
+   LOADER
+=========================== */
+
+#loader{
+    position:fixed;
+    inset:0;
+    background:#09090f;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:999999;
+    transition:.8s;
+}
+
+.loader-content{
+    text-align:center;
+}
+
+.loader-logo{
+    font-size:70px;
+    animation:bounce 1.5s infinite;
+}
+
+.loader-content h1{
+    color:white;
+    margin-top:20px;
+}
+
+.loader-content p{
+    color:#b5b5b5;
+}
+
+.loader-bar{
+    width:260px;
+    height:8px;
+    background:#222;
+    border-radius:50px;
+    overflow:hidden;
+    margin-top:25px;
+}
+
+.loader-progress{
+
+    height:100%;
+    width:0;
+
+    background:linear-gradient(
+    90deg,
+    #2563eb,
+    #06b6d4,
+    #22c55e);
+
+    animation:loading 2s forwards;
+}
+
+@keyframes loading{
+
+    from{
+        width:0;
+    }
+
+    to{
+        width:100%;
+    }
+
+}
+
+@keyframes bounce{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+}
+/* ===========================
+   SCROLL REVEAL
+=========================== */
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(80px);
+
+    transition:all .8s ease;
+
+}
+
+.reveal.active{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+/* ===========================
+   FLOATING BACKGROUND
+=========================== */
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-1;
+
+    background:
+    linear-gradient(
+    135deg,
+    #09090f,
+    #111827);
+
+}
+
+.bubble{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+    opacity:.45;
+
+    animation:float 18s infinite ease-in-out;
+
+}
+
+.bubble1{
+
+    width:280px;
+
+    height:280px;
+
+    background:#2563eb;
+
+    top:5%;
+
+    left:8%;
+
+}
+
+.bubble2{
+
+    width:350px;
+
+    height:350px;
+
+    background:#06b6d4;
+
+    right:5%;
+
+    top:20%;
+
+    animation-duration:22s;
+
+}
+
+.bubble3{
+
+    width:260px;
+
+    height:260px;
+
+    background:#9333ea;
+
+    bottom:8%;
+
+    left:25%;
+
+    animation-duration:16s;
+
+}
+
+.bubble4{
+
+    width:220px;
+
+    height:220px;
+
+    background:#22c55e;
+
+    bottom:20%;
+
+    right:20%;
+
+    animation-duration:24s;
+
+}
+
+.bubble5{
+
+    width:180px;
+
+    height:180px;
+
+    background:#3b82f6;
+
+    left:50%;
+
+    top:55%;
+
+    animation-duration:20s;
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:
+        translateY(0)
+        translateX(0)
+        scale(1);
+
+    }
+
+    25%{
+
+        transform:
+        translateY(-40px)
+        translateX(30px)
+        scale(1.1);
+
+    }
+
+    50%{
+
+        transform:
+        translateY(30px)
+        translateX(-40px)
+        scale(.9);
+
+    }
+
+    75%{
+
+        transform:
+        translateY(-20px)
+        translateX(50px)
+        scale(1.05);
+
+    }
+
+    100%{
+
+        transform:
+        translateY(0)
+        translateX(0)
+        scale(1);
+
+    }
+
+}
+/* ==================================
+   PREMIUM GLASS HOVER CARDS
+================================== */
+
+.card,
+.analytics-card,
+.budget-card,
+.glass-card,
+.ai-card,
+.action{
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:
+    transform .45s ease,
+    box-shadow .45s ease,
+    border-color .45s ease;
+
+}
+
+.card::before,
+.analytics-card::before,
+.budget-card::before,
+.glass-card::before,
+.ai-card::before,
+.action::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-150%;
+
+    width:60%;
+    height:100%;
+
+    background:
+    linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.25),
+        transparent
+    );
+
+    transform:skewX(-25deg);
+
+    transition:1s;
+
+}
+
+.card:hover::before,
+.analytics-card:hover::before,
+.budget-card:hover::before,
+.glass-card:hover::before,
+.ai-card:hover::before,
+.action:hover::before{
+
+    left:180%;
+
+}
+
+.card:hover,
+.analytics-card:hover,
+.budget-card:hover,
+.glass-card:hover,
+.ai-card:hover,
+.action:hover{
+
+    transform:
+    translateY(-12px)
+    scale(1.02);
+
+    box-shadow:
+
+    0 15px 35px rgba(37,99,235,.25),
+
+    0 0 25px rgba(37,99,235,.20);
+
+}
+.action,
+.card,
+.analytics-card,
+.budget-card,
+.ai-card{
+
+    cursor:pointer;
+
+}
+/* ==================================
+   PREMIUM ANIMATED BUTTONS
+================================== */
+
+button,
+.login-btn,
+.logout-btn,
+#sendBtn,
+#addBtn,
+.analytics-buttons button,
+.ai-card button{
+
+    position: relative;
+
+    overflow: hidden;
+
+    border: none;
+
+    outline: none;
+
+    color: white;
+
+    cursor: pointer;
+
+    background: linear-gradient(
+        270deg,
+        #2563eb,
+        #3b82f6,
+        #7c3aed,
+        #06b6d4,
+        #2563eb
+    );
+
+    background-size: 500% 500%;
+
+    animation: buttonGradient 8s ease infinite;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+
+    box-shadow:
+        0 8px 20px rgba(37,99,235,.25);
+
+}
+
+button:hover,
+.login-btn:hover,
+.logout-btn:hover,
+#sendBtn:hover,
+#addBtn:hover,
+.analytics-buttons button:hover,
+.ai-card button:hover{
+
+    transform:
+        translateY(-4px)
+        scale(1.03);
+
+    box-shadow:
+        0 15px 35px rgba(37,99,235,.40),
+        0 0 25px rgba(37,99,235,.30);
+
+}
+
+button:active,
+.login-btn:active,
+.logout-btn:active,
+#sendBtn:active,
+#addBtn:active{
+
+    transform:scale(.96);
+
+}
+
+button::before,
+.login-btn::before,
+.logout-btn::before,
+#sendBtn::before,
+#addBtn::before,
+.analytics-buttons button::before,
+.ai-card button::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:60%;
+
+    height:100%;
+
+    background:
+    linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.4),
+        transparent
+    );
+
+    transform:skewX(-25deg);
+
+}
+
+button:hover::before,
+.login-btn:hover::before,
+.logout-btn:hover::before,
+#sendBtn:hover::before,
+#addBtn:hover::before,
+.analytics-buttons button:hover::before,
+.ai-card button:hover::before{
+
+    animation:shine .9s forwards;
+
+}
+
+@keyframes buttonGradient{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+@keyframes shine{
+
+    from{
+        left:-120%;
+    }
+
+    to{
+        left:180%;
+    }
+
+}
+/* ==========================
+   LIVE ANIMATED BACKGROUND
+========================== */
+
+body{
+
+    background: linear-gradient(
+        -45deg,
+        #020617,
+        #1e3a8a,
+        #4c1d95,
+        #0f766e,
+        #0891b2,
+        #2563eb
+    );
+
+    background-size: 500% 500%;
+
+    animation: liveGradient 10s ease infinite;
+
+}
+
+@keyframes liveGradient{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    25%{
+        background-position:50% 100%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    75%{
+        background-position:50% 0%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+/* ==========================
+   MOUSE GLOW EFFECT
+========================== */
+
+#cursor-glow{
+
+    position: fixed;
+
+    width: 320px;
+    height: 320px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    background: radial-gradient(
+        circle,
+        rgba(37,99,235,.28) 0%,
+        rgba(124,58,237,.20) 35%,
+        rgba(6,182,212,.12) 60%,
+        transparent 80%
+    );
+
+    transform: translate(-50%,-50%);
+
+    filter: blur(40px);
+
+    transition:
+        left .08s linear,
+        top .08s linear;
+
+}
+
+/* Keep all content above the glow */
+
+header,
+main,
+footer,
+#authSection{
+
+    position: relative;
+
+    z-index: 1;
+
+}
