@@ -70,7 +70,13 @@ loginBtn.addEventListener("click", async () => {
 });
 
 logoutBtn.addEventListener("click", async () => {
+
+    localStorage.removeItem("transactions");
+
+    transactions = [];
+
     await signOut(auth);
+
 });
 
 onAuthStateChanged(auth, async (user) => {
@@ -102,7 +108,12 @@ onAuthStateChanged(auth, async (user) => {
         userName.textContent = "";
         userPhoto.removeAttribute("src");
 
-        transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+        transactions = [];
+
+        renderTransactions();
+        updateRecentActivity();
+        updateAnalytics();
+        updateBudget();
 
         renderTransactions();
         updateRecentActivity();
