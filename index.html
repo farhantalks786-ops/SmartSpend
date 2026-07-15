@@ -16,6 +16,18 @@
 </head>
 
 <body>
+    <div id="cursor-glow"></div>
+    <div id="loader">
+    <div class="loader-content">
+        <div class="loader-logo">💰</div>
+        <h1>SmartSpend AI</h1>
+        <p>Loading your financial dashboard...</p>
+
+        <div class="loader-bar">
+            <div class="loader-progress"></div>
+        </div>
+    </div>
+</div>
 
     <div id="authSection" style="padding:15px; text-align:right;">
         <div class="auth-box">
@@ -41,7 +53,19 @@
         </div>
     </div>
 
-    <div class="background"></div>
+    <div class="background">
+
+    <span class="bubble bubble1"></span>
+
+    <span class="bubble bubble2"></span>
+
+    <span class="bubble bubble3"></span>
+
+    <span class="bubble bubble4"></span>
+
+    <span class="bubble bubble5"></span>
+
+</div>
 
     <header>
         <nav>
@@ -61,7 +85,7 @@
 
     <main>
 
-        <section class="hero" id="dashboard">
+        <section class="hero reveal" id="dashboard">
             <div class="hero-left">
                 <h1>
                     Manage Your Money
@@ -82,7 +106,7 @@
             </div>
         </section>
 
-        <section class="cards">
+        <section class="cards reveal">
             <div class="card income">
                 <div class="icon">💵</div>
                 <h3>Total Income</h3>
@@ -112,7 +136,7 @@
             </div>
         </section>
 
-        <section class="chatbot" id="ai">
+        <section class="chatbot reveal" id="ai">
             <div class="chat-glow"></div>
 
             <div class="chat-box">
@@ -153,7 +177,7 @@
             </div>
         </section>
 
-        <section class="quick-actions">
+        <section class="quick-actions reveal">
             <h2>Quick Actions</h2>
 
             <div class="action-grid">
@@ -189,7 +213,7 @@
             </div>
         </section>
 
-        <section class="overview">
+        <section class="overview reveal">
             <div class="left-panel">
                 <h2>Recent Activity</h2>
                 <div id="recentActivity"></div>
@@ -209,7 +233,7 @@
             </div>
         </section>
 
-        <section class="analytics" id="analytics">
+        <section class="analytics reveal" id="analytics">
             <h2 class="analytics-title">📊 SmartSpend Analytics Dashboard</h2>
 
             <div class="analytics-cards">
@@ -253,7 +277,7 @@
             </div>
         </section>
 
-        <section class="transaction-section">
+        <section class="transaction-section reveal">
             <div class="transaction-form">
                 <h2>Add New Transaction</h2>
 
@@ -337,7 +361,7 @@
             </div>
         </section>
 
-        <section class="budget-section" id="budget">
+        <section class="budget-section reveal" id="budget">
             <div class="budget-card">
                 <h2>Monthly Budget</h2>
                 <h1>₹50,000</h1>
